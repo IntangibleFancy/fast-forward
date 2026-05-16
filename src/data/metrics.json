@@ -1,0 +1,280 @@
+{
+  "months": [
+    {
+      "month": "Jan",
+      "year": 2025,
+      "onTimeDeliveries": 847,
+      "shipmentVolumeLbs": 2450000,
+      "openExceptions": 182,
+      "fuelConsumptionGallons": 68500,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 195, "openExceptions": 28 },
+        { "name": "Northeast", "onTimeDeliveries": 183, "openExceptions": 32 },
+        { "name": "West",      "onTimeDeliveries": 172, "openExceptions": 36 },
+        { "name": "South",     "onTimeDeliveries": 148, "openExceptions": 42 },
+        { "name": "Southwest", "onTimeDeliveries": 85,  "openExceptions": 25 },
+        { "name": "Northwest", "onTimeDeliveries": 64,  "openExceptions": 19 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 42,
+        "labelError": 38,
+        "distributionCenterError": 45,
+        "manifestError": 31,
+        "storageCapacity": 26
+      }
+    },
+    {
+      "month": "Feb",
+      "year": 2025,
+      "onTimeDeliveries": 862,
+      "shipmentVolumeLbs": 2280000,
+      "openExceptions": 175,
+      "fuelConsumptionGallons": 64200,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 199, "openExceptions": 26 },
+        { "name": "Northeast", "onTimeDeliveries": 187, "openExceptions": 31 },
+        { "name": "West",      "onTimeDeliveries": 173, "openExceptions": 35 },
+        { "name": "South",     "onTimeDeliveries": 152, "openExceptions": 41 },
+        { "name": "Southwest", "onTimeDeliveries": 87,  "openExceptions": 24 },
+        { "name": "Northwest", "onTimeDeliveries": 64,  "openExceptions": 18 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 40,
+        "labelError": 36,
+        "distributionCenterError": 44,
+        "manifestError": 32,
+        "storageCapacity": 23
+      }
+    },
+    {
+      "month": "Mar",
+      "year": 2025,
+      "onTimeDeliveries": 891,
+      "shipmentVolumeLbs": 2820000,
+      "openExceptions": 168,
+      "fuelConsumptionGallons": 74800,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 205, "openExceptions": 25 },
+        { "name": "Northeast", "onTimeDeliveries": 192, "openExceptions": 30 },
+        { "name": "West",      "onTimeDeliveries": 180, "openExceptions": 33 },
+        { "name": "South",     "onTimeDeliveries": 157, "openExceptions": 40 },
+        { "name": "Southwest", "onTimeDeliveries": 91,  "openExceptions": 24 },
+        { "name": "Northwest", "onTimeDeliveries": 66,  "openExceptions": 16 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 38,
+        "labelError": 35,
+        "distributionCenterError": 42,
+        "manifestError": 30,
+        "storageCapacity": 23
+      }
+    },
+    {
+      "month": "Apr",
+      "year": 2025,
+      "onTimeDeliveries": 878,
+      "shipmentVolumeLbs": 2750000,
+      "openExceptions": 172,
+      "fuelConsumptionGallons": 73200,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 202, "openExceptions": 26 },
+        { "name": "Northeast", "onTimeDeliveries": 190, "openExceptions": 31 },
+        { "name": "West",      "onTimeDeliveries": 177, "openExceptions": 34 },
+        { "name": "South",     "onTimeDeliveries": 155, "openExceptions": 41 },
+        { "name": "Southwest", "onTimeDeliveries": 90,  "openExceptions": 24 },
+        { "name": "Northwest", "onTimeDeliveries": 64,  "openExceptions": 16 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 40,
+        "labelError": 36,
+        "distributionCenterError": 43,
+        "manifestError": 30,
+        "storageCapacity": 23
+      }
+    },
+    {
+      "month": "May",
+      "year": 2025,
+      "onTimeDeliveries": 915,
+      "shipmentVolumeLbs": 2980000,
+      "openExceptions": 158,
+      "fuelConsumptionGallons": 78400,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 211, "openExceptions": 23 },
+        { "name": "Northeast", "onTimeDeliveries": 198, "openExceptions": 29 },
+        { "name": "West",      "onTimeDeliveries": 185, "openExceptions": 32 },
+        { "name": "South",     "onTimeDeliveries": 162, "openExceptions": 37 },
+        { "name": "Southwest", "onTimeDeliveries": 93,  "openExceptions": 21 },
+        { "name": "Northwest", "onTimeDeliveries": 66,  "openExceptions": 16 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 36,
+        "labelError": 33,
+        "distributionCenterError": 40,
+        "manifestError": 28,
+        "storageCapacity": 21
+      }
+    },
+    {
+      "month": "Jun",
+      "year": 2025,
+      "onTimeDeliveries": 940,
+      "shipmentVolumeLbs": 3150000,
+      "openExceptions": 142,
+      "fuelConsumptionGallons": 81900,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 218, "openExceptions": 20 },
+        { "name": "Northeast", "onTimeDeliveries": 204, "openExceptions": 26 },
+        { "name": "West",      "onTimeDeliveries": 191, "openExceptions": 29 },
+        { "name": "South",     "onTimeDeliveries": 166, "openExceptions": 34 },
+        { "name": "Southwest", "onTimeDeliveries": 96,  "openExceptions": 19 },
+        { "name": "Northwest", "onTimeDeliveries": 65,  "openExceptions": 14 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 32,
+        "labelError": 30,
+        "distributionCenterError": 36,
+        "manifestError": 26,
+        "storageCapacity": 18
+      }
+    },
+    {
+      "month": "Jul",
+      "year": 2025,
+      "onTimeDeliveries": 928,
+      "shipmentVolumeLbs": 2890000,
+      "openExceptions": 148,
+      "fuelConsumptionGallons": 76300,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 214, "openExceptions": 21 },
+        { "name": "Northeast", "onTimeDeliveries": 201, "openExceptions": 27 },
+        { "name": "West",      "onTimeDeliveries": 188, "openExceptions": 30 },
+        { "name": "South",     "onTimeDeliveries": 164, "openExceptions": 35 },
+        { "name": "Southwest", "onTimeDeliveries": 95,  "openExceptions": 20 },
+        { "name": "Northwest", "onTimeDeliveries": 66,  "openExceptions": 15 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 34,
+        "labelError": 31,
+        "distributionCenterError": 38,
+        "manifestError": 27,
+        "storageCapacity": 18
+      }
+    },
+    {
+      "month": "Aug",
+      "year": 2025,
+      "onTimeDeliveries": 958,
+      "shipmentVolumeLbs": 3050000,
+      "openExceptions": 131,
+      "fuelConsumptionGallons": 79800,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 222, "openExceptions": 18 },
+        { "name": "Northeast", "onTimeDeliveries": 208, "openExceptions": 24 },
+        { "name": "West",      "onTimeDeliveries": 195, "openExceptions": 27 },
+        { "name": "South",     "onTimeDeliveries": 169, "openExceptions": 31 },
+        { "name": "Southwest", "onTimeDeliveries": 97,  "openExceptions": 18 },
+        { "name": "Northwest", "onTimeDeliveries": 67,  "openExceptions": 13 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 30,
+        "labelError": 28,
+        "distributionCenterError": 33,
+        "manifestError": 24,
+        "storageCapacity": 16
+      }
+    },
+    {
+      "month": "Sep",
+      "year": 2025,
+      "onTimeDeliveries": 982,
+      "shipmentVolumeLbs": 3280000,
+      "openExceptions": 118,
+      "fuelConsumptionGallons": 84500,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 227, "openExceptions": 17 },
+        { "name": "Northeast", "onTimeDeliveries": 213, "openExceptions": 22 },
+        { "name": "West",      "onTimeDeliveries": 200, "openExceptions": 24 },
+        { "name": "South",     "onTimeDeliveries": 173, "openExceptions": 28 },
+        { "name": "Southwest", "onTimeDeliveries": 100, "openExceptions": 16 },
+        { "name": "Northwest", "onTimeDeliveries": 69,  "openExceptions": 11 }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 27,
+        "labelError": 25,
+        "distributionCenterError": 30,
+        "manifestError": 22,
+        "storageCapacity": 14
+      }
+    },
+    {
+      "month": "Oct",
+      "year": 2025,
+      "onTimeDeliveries": 1012,
+      "shipmentVolumeLbs": 3640000,
+      "openExceptions": 98,
+      "fuelConsumptionGallons": 91200,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 234, "openExceptions": 14 },
+        { "name": "Northeast", "onTimeDeliveries": 220, "openExceptions": 18 },
+        { "name": "West",      "onTimeDeliveries": 206, "openExceptions": 20 },
+        { "name": "South",     "onTimeDeliveries": 178, "openExceptions": 24 },
+        { "name": "Southwest", "onTimeDeliveries": 104, "openExceptions": 13 },
+        { "name": "Northwest", "onTimeDeliveries": 70,  "openExceptions": 9  }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 22,
+        "labelError": 21,
+        "distributionCenterError": 25,
+        "manifestError": 18,
+        "storageCapacity": 12
+      }
+    },
+    {
+      "month": "Nov",
+      "year": 2025,
+      "onTimeDeliveries": 1048,
+      "shipmentVolumeLbs": 4120000,
+      "openExceptions": 82,
+      "fuelConsumptionGallons": 102400,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 243, "openExceptions": 11 },
+        { "name": "Northeast", "onTimeDeliveries": 229, "openExceptions": 15 },
+        { "name": "West",      "onTimeDeliveries": 214, "openExceptions": 17 },
+        { "name": "South",     "onTimeDeliveries": 184, "openExceptions": 20 },
+        { "name": "Southwest", "onTimeDeliveries": 107, "openExceptions": 11 },
+        { "name": "Northwest", "onTimeDeliveries": 71,  "openExceptions": 8  }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 18,
+        "labelError": 17,
+        "distributionCenterError": 21,
+        "manifestError": 15,
+        "storageCapacity": 11
+      }
+    },
+    {
+      "month": "Dec",
+      "year": 2025,
+      "onTimeDeliveries": 1031,
+      "shipmentVolumeLbs": 3850000,
+      "openExceptions": 75,
+      "fuelConsumptionGallons": 96100,
+      "regions": [
+        { "name": "Midwest",   "onTimeDeliveries": 239, "openExceptions": 10 },
+        { "name": "Northeast", "onTimeDeliveries": 225, "openExceptions": 14 },
+        { "name": "West",      "onTimeDeliveries": 210, "openExceptions": 16 },
+        { "name": "South",     "onTimeDeliveries": 181, "openExceptions": 18 },
+        { "name": "Southwest", "onTimeDeliveries": 106, "openExceptions": 10 },
+        { "name": "Northwest", "onTimeDeliveries": 70,  "openExceptions": 7  }
+      ],
+      "exceptionReasons": {
+        "mechanicalIssues": 17,
+        "labelError": 16,
+        "distributionCenterError": 19,
+        "manifestError": 14,
+        "storageCapacity": 9
+      }
+    }
+  ]
+}

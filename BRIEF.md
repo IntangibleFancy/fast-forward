@@ -28,6 +28,12 @@ Generate a fake dataset as a JSON file (src/data/metrics.json).
     - Left: Line chart showing shipment volumes by month for 2025 juxtaposed with fuel consumption
     - Middle: Bar chart showing the number of open exceptions each month
     - Right: Bar chart showing number of open exceptions for the year by open exception reason
+- Each section has a title and short description
+
+## Interactions
+- v-app-bar month picker filters data for the v-cards and highlights the corresponding month on the chart
+- When "All" is selected from the month picker, the v-cards display the sum or average of all months
+- v-cards show a small up/down arrow indicating the change from the previous month if data is available
 
 ## Tech
 - Vue 3
@@ -37,7 +43,7 @@ Generate a fake dataset as a JSON file (src/data/metrics.json).
 - Use fake data from a local JSON. No APIs.
 - No routing needed for this. Single page application.
 
-## Design
+## Design and style
 - Google fonts (h1-h6: "Bebas Neue") & (everything else: "Roboto")
 - Darkmode themed
 - Clean and minimal
