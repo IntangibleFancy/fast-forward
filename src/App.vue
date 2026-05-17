@@ -504,7 +504,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
               :trend="onTimeTrend"
               :trend-context="previousData ? 'vs ' + previousData.month : undefined"
               :trend-positive-up="true"
-              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : selectedMonth + ' 2025'"
             />
           </v-col>
 
@@ -516,7 +516,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
               :trend="volumeTrend"
               :trend-context="previousData ? 'vs ' + previousData.month : undefined"
               :trend-positive-up="true"
-              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : selectedMonth + ' 2025'"
             >
               <template #action>
                 <v-btn-toggle
@@ -545,7 +545,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
               :trend="regionTrend"
               :trend-context="previousData ? 'ratio vs ' + previousData.month : undefined"
               :trend-positive-up="true"
-              :filter-label="currentData ? 'No prior month data' : undefined"
+              :filter-label="currentData ? selectedMonth + ' 2025' : undefined"
             />
           </v-col>
 
@@ -559,7 +559,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
               :trend="exceptionTrend"
               :trend-context="previousData ? 'vs ' + previousData.month : undefined"
               :trend-positive-up="false"
-              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : selectedMonth + ' 2025'"
             />
           </v-col>
 

@@ -58,7 +58,7 @@ const trendClass = computed(() => {
     <div v-if="subhead" class="text-caption text-medium-emphasis mt-1">{{ subhead }}</div>
 
     <!-- Trend row or static filter label -->
-    <div class="d-flex align-center mt-2 ga-1" v-if="trend">
+    <div class="d-flex align-center justify-center mt-2 ga-1" v-if="trend">
       <v-icon
         :icon="trend.up ? 'mdi-trending-up' : 'mdi-trending-down'"
         :color="trendColor"
@@ -68,7 +68,7 @@ const trendClass = computed(() => {
         {{ trend.pct }}%<template v-if="trendContext"> {{ trendContext }}</template>
       </span>
     </div>
-    <div v-else-if="filterLabel" class="text-caption text-disabled mt-2">{{ filterLabel }}</div>
+    <div v-if="filterLabel" class="text-caption text-disabled mt-2">{{ filterLabel }}</div>
 
   </v-card>
 </template>
