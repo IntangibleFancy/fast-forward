@@ -6,7 +6,7 @@
       "onTimeDeliveries": 847,
       "shipmentVolumeLbs": 2450000,
       "openExceptions": 182,
-      "fuelConsumptionGallons": 68500,
+      "fuelConsumptionGallons": 84500,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 195, "openExceptions": 28 },
         { "name": "Northeast", "onTimeDeliveries": 183, "openExceptions": 32 },
@@ -29,7 +29,7 @@
       "onTimeDeliveries": 862,
       "shipmentVolumeLbs": 2280000,
       "openExceptions": 175,
-      "fuelConsumptionGallons": 64200,
+      "fuelConsumptionGallons": 81200,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 199, "openExceptions": 26 },
         { "name": "Northeast", "onTimeDeliveries": 187, "openExceptions": 31 },
@@ -52,7 +52,7 @@
       "onTimeDeliveries": 891,
       "shipmentVolumeLbs": 2820000,
       "openExceptions": 168,
-      "fuelConsumptionGallons": 74800,
+      "fuelConsumptionGallons": 73100,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 205, "openExceptions": 25 },
         { "name": "Northeast", "onTimeDeliveries": 192, "openExceptions": 30 },
@@ -75,7 +75,7 @@
       "onTimeDeliveries": 878,
       "shipmentVolumeLbs": 2750000,
       "openExceptions": 172,
-      "fuelConsumptionGallons": 73200,
+      "fuelConsumptionGallons": 64800,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 202, "openExceptions": 26 },
         { "name": "Northeast", "onTimeDeliveries": 190, "openExceptions": 31 },
@@ -98,7 +98,7 @@
       "onTimeDeliveries": 915,
       "shipmentVolumeLbs": 2980000,
       "openExceptions": 158,
-      "fuelConsumptionGallons": 78400,
+      "fuelConsumptionGallons": 67500,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 211, "openExceptions": 23 },
         { "name": "Northeast", "onTimeDeliveries": 198, "openExceptions": 29 },
@@ -121,7 +121,7 @@
       "onTimeDeliveries": 940,
       "shipmentVolumeLbs": 3150000,
       "openExceptions": 142,
-      "fuelConsumptionGallons": 81900,
+      "fuelConsumptionGallons": 72400,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 218, "openExceptions": 20 },
         { "name": "Northeast", "onTimeDeliveries": 204, "openExceptions": 26 },
@@ -144,7 +144,7 @@
       "onTimeDeliveries": 928,
       "shipmentVolumeLbs": 2890000,
       "openExceptions": 148,
-      "fuelConsumptionGallons": 76300,
+      "fuelConsumptionGallons": 85900,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 214, "openExceptions": 21 },
         { "name": "Northeast", "onTimeDeliveries": 201, "openExceptions": 27 },
@@ -167,7 +167,7 @@
       "onTimeDeliveries": 958,
       "shipmentVolumeLbs": 3050000,
       "openExceptions": 131,
-      "fuelConsumptionGallons": 79800,
+      "fuelConsumptionGallons": 80600,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 222, "openExceptions": 18 },
         { "name": "Northeast", "onTimeDeliveries": 208, "openExceptions": 24 },
@@ -190,7 +190,7 @@
       "onTimeDeliveries": 982,
       "shipmentVolumeLbs": 3280000,
       "openExceptions": 118,
-      "fuelConsumptionGallons": 84500,
+      "fuelConsumptionGallons": 70200,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 227, "openExceptions": 17 },
         { "name": "Northeast", "onTimeDeliveries": 213, "openExceptions": 22 },
@@ -213,7 +213,7 @@
       "onTimeDeliveries": 1012,
       "shipmentVolumeLbs": 3640000,
       "openExceptions": 98,
-      "fuelConsumptionGallons": 91200,
+      "fuelConsumptionGallons": 76800,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 234, "openExceptions": 14 },
         { "name": "Northeast", "onTimeDeliveries": 220, "openExceptions": 18 },
@@ -236,7 +236,7 @@
       "onTimeDeliveries": 1048,
       "shipmentVolumeLbs": 4120000,
       "openExceptions": 82,
-      "fuelConsumptionGallons": 102400,
+      "fuelConsumptionGallons": 101300,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 243, "openExceptions": 11 },
         { "name": "Northeast", "onTimeDeliveries": 229, "openExceptions": 15 },
@@ -259,7 +259,7 @@
       "onTimeDeliveries": 1031,
       "shipmentVolumeLbs": 3850000,
       "openExceptions": 75,
-      "fuelConsumptionGallons": 96100,
+      "fuelConsumptionGallons": 94700,
       "regions": [
         { "name": "Midwest",   "onTimeDeliveries": 239, "openExceptions": 10 },
         { "name": "Northeast", "onTimeDeliveries": 225, "openExceptions": 14 },
