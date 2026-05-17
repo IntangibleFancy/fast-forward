@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { Line, Bar } from 'vue-chartjs'
 import MetricCard from './components/MetricCard.vue'
 import {
@@ -232,51 +232,27 @@ const scaleDefaults = {
 }
 
 // ── Line chart: Volume + Fuel ─────────────────────────────────────────────────
-const lineChartData = ref<ChartData<'line'>>({
-  labels: monthNames,
-  datasets: [
-    {
-      label: 'Volume (M lbs)',
-      data: months.map(m => parseFloat((m.shipmentVolumeLbs / 1_000_000).toFixed(2))),
-      borderColor: C.blue,
-      backgroundColor: C.blueAlpha,
-      pointBackgroundColor: months.map(() => C.blue),
-      pointRadius: months.map(() => 4),
-      pointHoverRadius: 8,
-      borderWidth: 2,
-      fill: true,
-      tension: 0.4,
-      yAxisID: 'y',
-    },
-    {
-      label: 'Fuel (K gal)',
-      data: months.map(m => parseFloat((m.fuelConsumptionGallons / 1000).toFixed(1))),
-      borderColor: C.cyan,
-      backgroundColor: C.cyanAlpha,
-      pointBackgroundColor: months.map(() => C.cyan),
-      pointRadius: months.map(() => 4),
-      pointHoverRadius: 8,
-      borderWidth: 2,
-      fill: true,
-      tension: 0.4,
-      yAxisID: 'y1',
-    },
-  ],
-})
+const lineChartData = computed<ChartData<'line'>>(() => {
+  const si = currentMonthIndex.value
+  const pointColor = (base: string, muted: string) =>
+    months.map((_, i) => (si === -1 || i === si ? base : muted))
+  const pointSize = months.map((_, i) => (si !== -1 && i === si ? 7 : 4))
 
-watch([currentMonthIndex, volumeUnit], ([si, unit]) => {
-  const s = si as number
-  const u = unit as 'lbs' | 'kg'
-  lineChartData.value = {
+  return {
     labels: monthNames,
     datasets: [
       {
-        label: `Volume (M ${u})`,
-        data: months.map(m => parseFloat(((u === 'lbs' ? m.shipmentVolumeLbs : Math.round(m.shipmentVolumeLbs * LBS_TO_KG)) / 1_000_000).toFixed(2))),
+        label: `Volume (M ${volumeUnit.value})`,
+        data: months.map(m => {
+          const val = volumeUnit.value === 'lbs'
+            ? m.shipmentVolumeLbs
+            : Math.round(m.shipmentVolumeLbs * LBS_TO_KG)
+          return parseFloat((val / 1_000_000).toFixed(2))
+        }),
         borderColor: C.blue,
         backgroundColor: C.blueAlpha,
-        pointBackgroundColor: months.map((_, i) => s === -1 || i === s ? C.blue : C.muted),
-        pointRadius: months.map((_, i) => s !== -1 && i === s ? 7 : 4),
+        pointBackgroundColor: pointColor(C.blue, C.muted),
+        pointRadius: pointSize,
         pointHoverRadius: 8,
         borderWidth: 2,
         fill: true,
@@ -288,8 +264,8 @@ watch([currentMonthIndex, volumeUnit], ([si, unit]) => {
         data: months.map(m => parseFloat((m.fuelConsumptionGallons / 1000).toFixed(1))),
         borderColor: C.cyan,
         backgroundColor: C.cyanAlpha,
-        pointBackgroundColor: months.map((_, i) => s === -1 || i === s ? C.cyan : C.mutedCyan),
-        pointRadius: months.map((_, i) => s !== -1 && i === s ? 7 : 4),
+        pointBackgroundColor: pointColor(C.cyan, C.mutedCyan),
+        pointRadius: pointSize,
         pointHoverRadius: 8,
         borderWidth: 2,
         fill: true,
@@ -328,19 +304,9 @@ const lineChartOptions = computed<ChartOptions<'line'>>(() => ({
 }))
 
 // ── Bar chart: Exceptions by month ────────────────────────────────────────────
-const barMonthData = ref<ChartData<'bar'>>({
-  labels: monthNames,
-  datasets: [{
-    label: 'Open Exceptions',
-    data: months.map(m => m.openExceptions),
-    backgroundColor: months.map(() => C.blue),
-    borderRadius: 4,
-    borderSkipped: false,
-  }],
-})
-
-watch(currentMonthIndex, (si) => {
-  barMonthData.value = {
+const barMonthData = computed<ChartData<'bar'>>(() => {
+  const si = currentMonthIndex.value
+  return {
     labels: monthNames,
     datasets: [{
       label: 'Open Exceptions',
@@ -517,6 +483,14 @@ const barReasonOptions: ChartOptions<'bar'> = {
     <v-main>
       <v-container fluid class="px-6 py-6">
 
+        <!-- ── Section header ─────────────────────────────────────────────── -->
+        <div class="mb-5">
+          <h2 class="section-title">Performance Overview</h2>
+          <p class="text-medium-emphasis text-body-2 mt-1">
+            Monthly breakdown of shipment activity, delivery exceptions, and fuel consumption across all regions.
+          </p>
+        </div>
+
         <!-- ── KPI Cards ──────────────────────────────────────────────────── -->
         <v-row>
 
@@ -590,14 +564,6 @@ const barReasonOptions: ChartOptions<'bar'> = {
           </v-col>
 
         </v-row>
-
-        <!-- ── Section header ─────────────────────────────────────────────── -->
-        <div class="mt-8 mb-5">
-          <h2 class="section-title">Performance Overview</h2>
-          <p class="text-medium-emphasis text-body-2 mt-1">
-            Monthly breakdown of shipment activity, delivery exceptions, and fuel consumption across all regions.
-          </p>
-        </div>
 
         <!-- ── Charts row ─────────────────────────────────────────────────── -->
         <v-row>
