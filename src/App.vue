@@ -383,7 +383,6 @@ const barReasonOptions: ChartOptions<'bar'> = {
             <MetricCard
               title="Shipment Volume"
               :value="fmtVolume(shipmentVolume)"
-              :subhead="volumeUnit"
               :trend="volumeTrend"
               :trend-context="previousData ? 'vs ' + previousData.month : undefined"
               :trend-positive-up="true"
@@ -416,7 +415,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
               :trend="regionTrend"
               :trend-context="previousData ? 'ratio vs ' + previousData.month : undefined"
               :trend-positive-up="true"
-              :filter-label="currentData ? 'No prior month data' : 'Best for the year'"
+              :filter-label="currentData ? 'No prior month data' : undefined"
             />
           </v-col>
 
