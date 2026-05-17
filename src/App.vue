@@ -365,7 +365,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
         <v-row>
 
           <!-- On-Time Deliveries -->
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="12" sm="6" md="3" class="d-flex flex-column">
             <MetricCard
               title="On-Time Deliveries"
               icon="mdi-check-decagram-outline"
@@ -379,7 +379,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
           </v-col>
 
           <!-- Shipment Volume -->
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="12" sm="6" md="3" class="d-flex flex-column">
             <MetricCard
               title="Shipment Volume"
               :value="fmtVolume(shipmentVolume)"
@@ -406,7 +406,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
           </v-col>
 
           <!-- Top Region -->
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="12" sm="6" md="3" class="d-flex flex-column">
             <MetricCard
               title="Top Region"
               icon="mdi-map-marker-radius-outline"
@@ -421,7 +421,7 @@ const barReasonOptions: ChartOptions<'bar'> = {
           </v-col>
 
           <!-- Open Exceptions -->
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="12" sm="6" md="3" class="d-flex flex-column">
             <MetricCard
               title="Open Exceptions"
               icon="mdi-alert-circle-outline"

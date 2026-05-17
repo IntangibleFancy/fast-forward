@@ -86,6 +86,7 @@ const trendClass = computed(() => {
   background-color: rgb(var(--v-theme-surface)) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
   transition: transform 0.18s ease, box-shadow 0.2s ease;
+  height: 100%;
 }
 
 .metric-card:hover {
