@@ -29,14 +29,12 @@ const props = withDefaults(defineProps<{
 
 const trendColor = computed(() => {
   if (!props.trend) return ''
-  const good = props.trendPositiveUp ? props.trend.up : !props.trend.up
-  return good ? 'success' : 'error'
+  return props.trend.up ? 'success' : 'error'
 })
 
 const trendClass = computed(() => {
   if (!props.trend) return ''
-  const good = props.trendPositiveUp ? props.trend.up : !props.trend.up
-  return good ? 'text-success' : 'text-error'
+  return props.trend.up ? 'text-success' : 'text-error'
 })
 </script>
 
