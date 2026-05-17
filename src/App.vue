@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { Line, Bar } from 'vue-chartjs'
 import MetricCard from './components/MetricCard.vue'
 import {
@@ -232,27 +232,51 @@ const scaleDefaults = {
 }
 
 // ── Line chart: Volume + Fuel ─────────────────────────────────────────────────
-const lineChartData = computed<ChartData<'line'>>(() => {
-  const si = currentMonthIndex.value
-  const pointColor = (base: string, muted: string) =>
-    months.map((_, i) => (si === -1 || i === si ? base : muted))
-  const pointSize = months.map((_, i) => (si !== -1 && i === si ? 7 : 4))
+const lineChartData = ref<ChartData<'line'>>({
+  labels: monthNames,
+  datasets: [
+    {
+      label: 'Volume (M lbs)',
+      data: months.map(m => parseFloat((m.shipmentVolumeLbs / 1_000_000).toFixed(2))),
+      borderColor: C.blue,
+      backgroundColor: C.blueAlpha,
+      pointBackgroundColor: months.map(() => C.blue),
+      pointRadius: months.map(() => 4),
+      pointHoverRadius: 8,
+      borderWidth: 2,
+      fill: true,
+      tension: 0.4,
+      yAxisID: 'y',
+    },
+    {
+      label: 'Fuel (K gal)',
+      data: months.map(m => parseFloat((m.fuelConsumptionGallons / 1000).toFixed(1))),
+      borderColor: C.cyan,
+      backgroundColor: C.cyanAlpha,
+      pointBackgroundColor: months.map(() => C.cyan),
+      pointRadius: months.map(() => 4),
+      pointHoverRadius: 8,
+      borderWidth: 2,
+      fill: true,
+      tension: 0.4,
+      yAxisID: 'y1',
+    },
+  ],
+})
 
-  return {
+watch([currentMonthIndex, volumeUnit], ([si, unit]) => {
+  const s = si as number
+  const u = unit as 'lbs' | 'kg'
+  lineChartData.value = {
     labels: monthNames,
     datasets: [
       {
-        label: `Volume (M ${volumeUnit.value})`,
-        data: months.map(m => {
-          const val = volumeUnit.value === 'lbs'
-            ? m.shipmentVolumeLbs
-            : Math.round(m.shipmentVolumeLbs * LBS_TO_KG)
-          return parseFloat((val / 1_000_000).toFixed(2))
-        }),
+        label: `Volume (M ${u})`,
+        data: months.map(m => parseFloat(((u === 'lbs' ? m.shipmentVolumeLbs : Math.round(m.shipmentVolumeLbs * LBS_TO_KG)) / 1_000_000).toFixed(2))),
         borderColor: C.blue,
         backgroundColor: C.blueAlpha,
-        pointBackgroundColor: pointColor(C.blue, C.muted),
-        pointRadius: pointSize,
+        pointBackgroundColor: months.map((_, i) => s === -1 || i === s ? C.blue : C.muted),
+        pointRadius: months.map((_, i) => s !== -1 && i === s ? 7 : 4),
         pointHoverRadius: 8,
         borderWidth: 2,
         fill: true,
@@ -264,8 +288,8 @@ const lineChartData = computed<ChartData<'line'>>(() => {
         data: months.map(m => parseFloat((m.fuelConsumptionGallons / 1000).toFixed(1))),
         borderColor: C.cyan,
         backgroundColor: C.cyanAlpha,
-        pointBackgroundColor: pointColor(C.cyan, C.mutedCyan),
-        pointRadius: pointSize,
+        pointBackgroundColor: months.map((_, i) => s === -1 || i === s ? C.cyan : C.mutedCyan),
+        pointRadius: months.map((_, i) => s !== -1 && i === s ? 7 : 4),
         pointHoverRadius: 8,
         borderWidth: 2,
         fill: true,
@@ -304,9 +328,19 @@ const lineChartOptions = computed<ChartOptions<'line'>>(() => ({
 }))
 
 // ── Bar chart: Exceptions by month ────────────────────────────────────────────
-const barMonthData = computed<ChartData<'bar'>>(() => {
-  const si = currentMonthIndex.value
-  return {
+const barMonthData = ref<ChartData<'bar'>>({
+  labels: monthNames,
+  datasets: [{
+    label: 'Open Exceptions',
+    data: months.map(m => m.openExceptions),
+    backgroundColor: months.map(() => C.blue),
+    borderRadius: 4,
+    borderSkipped: false,
+  }],
+})
+
+watch(currentMonthIndex, (si) => {
+  barMonthData.value = {
     labels: monthNames,
     datasets: [{
       label: 'Open Exceptions',
