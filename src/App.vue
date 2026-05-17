@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { Line, Bar } from 'vue-chartjs'
+import MetricCard from './components/MetricCard.vue'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -365,31 +366,30 @@ const barReasonOptions: ChartOptions<'bar'> = {
 
           <!-- On-Time Deliveries -->
           <v-col cols="12" sm="6" md="3">
-            <v-card class="metric-card pa-5" rounded="lg" elevation="0">
-              <div class="d-flex align-start justify-space-between mb-3">
-                <span class="card-label">On-Time Deliveries</span>
-                <v-icon icon="mdi-check-decagram-outline" color="primary" size="20" />
-              </div>
-              <div class="metric-value">{{ fmt(onTimeDeliveries) }}</div>
-              <div class="d-flex align-center mt-2 ga-1" v-if="onTimeTrend">
-                <v-icon
-                  :icon="onTimeTrend.up ? 'mdi-trending-up' : 'mdi-trending-down'"
-                  :color="onTimeTrend.up ? 'success' : 'error'"
-                  size="16"
-                />
-                <span :class="onTimeTrend.up ? 'text-success' : 'text-error'" class="text-caption">
-                  {{ onTimeTrend.pct }}% vs {{ previousData?.month }}
-                </span>
-              </div>
-              <div v-else class="text-caption text-disabled mt-2">Full year total</div>
-            </v-card>
+            <MetricCard
+              title="On-Time Deliveries"
+              icon="mdi-check-decagram-outline"
+              icon-color="primary"
+              :value="fmt(onTimeDeliveries)"
+              :trend="onTimeTrend"
+              :trend-context="previousData ? 'vs ' + previousData.month : undefined"
+              :trend-positive-up="true"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+            />
           </v-col>
 
           <!-- Shipment Volume -->
           <v-col cols="12" sm="6" md="3">
-            <v-card class="metric-card pa-5" rounded="lg" elevation="0">
-              <div class="d-flex align-start justify-space-between mb-3">
-                <span class="card-label">Shipment Volume</span>
+            <MetricCard
+              title="Shipment Volume"
+              :value="fmtVolume(shipmentVolume)"
+              :subhead="volumeUnit"
+              :trend="volumeTrend"
+              :trend-context="previousData ? 'vs ' + previousData.month : undefined"
+              :trend-positive-up="true"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+            >
+              <template #action>
                 <v-btn-toggle
                   v-model="volumeUnit"
                   density="compact"
@@ -401,70 +401,37 @@ const barReasonOptions: ChartOptions<'bar'> = {
                   <v-btn value="lbs" size="x-small">lbs</v-btn>
                   <v-btn value="kg" size="x-small">kg</v-btn>
                 </v-btn-toggle>
-              </div>
-              <div class="metric-value">{{ fmtVolume(shipmentVolume) }}</div>
-              <div class="text-caption text-medium-emphasis mt-1">{{ volumeUnit }}</div>
-              <div class="d-flex align-center mt-1 ga-1" v-if="volumeTrend">
-                <v-icon
-                  :icon="volumeTrend.up ? 'mdi-trending-up' : 'mdi-trending-down'"
-                  color="primary"
-                  size="16"
-                />
-                <span class="text-caption text-medium-emphasis">
-                  {{ volumeTrend.pct }}% vs {{ previousData?.month }}
-                </span>
-              </div>
-              <div v-else class="text-caption text-disabled mt-2">Full year total</div>
-            </v-card>
+              </template>
+            </MetricCard>
           </v-col>
 
           <!-- Top Region -->
           <v-col cols="12" sm="6" md="3">
-            <v-card class="metric-card pa-5" rounded="lg" elevation="0">
-              <div class="d-flex align-start justify-space-between mb-3">
-                <span class="card-label">Top Region</span>
-                <v-icon icon="mdi-map-marker-radius-outline" color="secondary" size="20" />
-              </div>
-              <div class="metric-value" style="font-size:1.8rem">{{ topRegion?.name ?? '—' }}</div>
-              <div class="text-caption text-medium-emphasis mt-1">
-                OTD ratio: {{ topRegion ? topRegion.ratio.toFixed(1) : '—' }}
-              </div>
-              <div class="d-flex align-center mt-1 ga-1" v-if="regionTrend">
-                <v-icon
-                  :icon="regionTrend.up ? 'mdi-trending-up' : 'mdi-trending-down'"
-                  :color="regionTrend.up ? 'success' : 'error'"
-                  size="16"
-                />
-                <span :class="regionTrend.up ? 'text-success' : 'text-error'" class="text-caption">
-                  {{ regionTrend.pct }}% ratio vs {{ previousData?.month }}
-                </span>
-              </div>
-              <div v-else class="text-caption text-disabled mt-2">
-                {{ currentData ? 'No prior month data' : 'Best for the year' }}
-              </div>
-            </v-card>
+            <MetricCard
+              title="Top Region"
+              icon="mdi-map-marker-radius-outline"
+              icon-color="secondary"
+              :value="topRegion?.name ?? '—'"
+              :subhead="topRegion ? 'OTD ratio: ' + topRegion.ratio.toFixed(1) : undefined"
+              :trend="regionTrend"
+              :trend-context="previousData ? 'ratio vs ' + previousData.month : undefined"
+              :trend-positive-up="true"
+              :filter-label="currentData ? 'No prior month data' : 'Best for the year'"
+            />
           </v-col>
 
           <!-- Open Exceptions -->
           <v-col cols="12" sm="6" md="3">
-            <v-card class="metric-card pa-5" rounded="lg" elevation="0">
-              <div class="d-flex align-start justify-space-between mb-3">
-                <span class="card-label">Open Exceptions</span>
-                <v-icon icon="mdi-alert-circle-outline" color="warning" size="20" />
-              </div>
-              <div class="metric-value">{{ fmt(openExceptions) }}</div>
-              <div class="d-flex align-center mt-2 ga-1" v-if="exceptionTrend">
-                <v-icon
-                  :icon="exceptionTrend.up ? 'mdi-trending-up' : 'mdi-trending-down'"
-                  :color="exceptionTrend.up ? 'error' : 'success'"
-                  size="16"
-                />
-                <span :class="exceptionTrend.up ? 'text-error' : 'text-success'" class="text-caption">
-                  {{ exceptionTrend.pct }}% vs {{ previousData?.month }}
-                </span>
-              </div>
-              <div v-else class="text-caption text-disabled mt-2">Full year total</div>
-            </v-card>
+            <MetricCard
+              title="Open Exceptions"
+              icon="mdi-alert-circle-outline"
+              icon-color="warning"
+              :value="fmt(openExceptions)"
+              :trend="exceptionTrend"
+              :trend-context="previousData ? 'vs ' + previousData.month : undefined"
+              :trend-positive-up="false"
+              :filter-label="selectedMonth === 'All' ? 'Full year total' : 'No prior month data'"
+            />
           </v-col>
 
         </v-row>
@@ -537,33 +504,6 @@ const barReasonOptions: ChartOptions<'bar'> = {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.45rem;
   letter-spacing: 0.1em;
-  line-height: 1;
-  color: #fff;
-}
-
-.card-label {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.metric-card {
-  background-color: rgb(var(--v-theme-surface)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-  transition: transform 0.18s ease, box-shadow 0.2s ease;
-}
-
-.metric-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
-}
-
-.metric-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  letter-spacing: 0.03em;
   line-height: 1;
   color: #fff;
 }
