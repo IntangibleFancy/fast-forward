@@ -729,6 +729,12 @@ const barReasonOptions: ChartOptions<'bar'> = {
   padding-left: 8px;
 }
 
+:deep(.v-toolbar-title__placeholder) {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+}
+
 :deep(.v-app-bar .v-select__selection-text) {
   color: rgba(255, 255, 255, 0.92) !important;
 }
