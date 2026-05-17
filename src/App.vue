@@ -55,6 +55,61 @@ const monthOptions = ['All', ...monthNames]
 const selectedMonth = ref<string>('All')
 const volumeUnit = ref<'lbs' | 'kg'>('lbs')
 
+// ── Notifications ─────────────────────────────────────────────────────────────
+interface Notification {
+  id: number
+  type: 'warning' | 'success' | 'info' | 'error'
+  icon: string
+  title: string
+  message: string
+  time: string
+  read: boolean
+}
+
+const notifications = ref<Notification[]>([
+  {
+    id: 1,
+    type: 'warning',
+    icon: 'mdi-alert-outline',
+    title: 'Exception Spike — South Region',
+    message: 'Open exceptions in the South region are up 18% compared to last week. Review flagged shipments.',
+    time: '2 hours ago',
+    read: false,
+  },
+  {
+    id: 2,
+    type: 'success',
+    icon: 'mdi-trophy-outline',
+    title: 'Record Shipment Volume',
+    message: 'November shipment volume hit the highest monthly total on record at 4.1M lbs.',
+    time: '1 day ago',
+    read: false,
+  },
+  {
+    id: 3,
+    type: 'error',
+    icon: 'mdi-file-document-alert-outline',
+    title: 'Manifest Errors Flagged',
+    message: '3 manifests from the Midwest DC have been flagged for manifest error review.',
+    time: '2 days ago',
+    read: false,
+  },
+])
+
+const notificationsMenu = ref(false)
+const unreadCount = computed(() => notifications.value.filter(n => !n.read).length)
+
+function markAllRead() {
+  notifications.value.forEach(n => (n.read = true))
+}
+
+const notificationTypeColor: Record<Notification['type'], string> = {
+  warning: 'warning',
+  success: 'success',
+  error: 'error',
+  info: 'primary',
+}
+
 // ── Selectors ─────────────────────────────────────────────────────────────────
 const currentMonthIndex = computed(() =>
   selectedMonth.value === 'All' ? -1 : monthNames.indexOf(selectedMonth.value)
@@ -353,6 +408,73 @@ const barReasonOptions: ChartOptions<'bar'> = {
             style="min-width: 110px"
             bg-color="surface-variant"
           />
+
+          <!-- Notifications bell -->
+          <v-menu
+            v-model="notificationsMenu"
+            :close-on-content-click="false"
+            location="bottom end"
+            offset="8"
+            transition="slide-y-transition"
+          >
+            <template #activator="{ props: menuProps }">
+              <v-btn
+                v-bind="menuProps"
+                icon
+                variant="text"
+                size="small"
+                class="notif-btn"
+              >
+                <v-badge
+                  :content="unreadCount"
+                  :model-value="unreadCount > 0"
+                  color="error"
+                  floating
+                >
+                  <v-icon icon="mdi-bell-outline" size="22" />
+                </v-badge>
+              </v-btn>
+            </template>
+
+            <v-card class="notif-panel" rounded="lg" elevation="4" width="360">
+              <div class="d-flex align-center justify-space-between px-4 pt-4 pb-2">
+                <span class="notif-panel-title">Notifications</span>
+                <v-btn
+                  v-if="unreadCount > 0"
+                  variant="text"
+                  size="x-small"
+                  color="primary"
+                  @click="markAllRead"
+                >Mark all read</v-btn>
+              </div>
+
+              <v-divider />
+
+              <v-list lines="three" class="notif-list pa-0">
+                <v-list-item
+                  v-for="n in notifications"
+                  :key="n.id"
+                  :class="['notif-item', { 'notif-unread': !n.read }]"
+                  @click="n.read = true"
+                >
+                  <template #prepend>
+                    <v-icon
+                      :icon="n.icon"
+                      :color="notificationTypeColor[n.type]"
+                      size="22"
+                      class="mt-1 mr-1"
+                    />
+                  </template>
+                  <v-list-item-title class="notif-item-title mb-1">{{ n.title }}</v-list-item-title>
+                  <v-list-item-subtitle class="notif-item-body">{{ n.message }}</v-list-item-subtitle>
+                  <template #append>
+                    <span class="notif-time">{{ n.time }}</span>
+                  </template>
+                </v-list-item>
+              </v-list>
+            </v-card>
+          </v-menu>
+
         </div>
       </template>
     </v-app-bar>
@@ -534,6 +656,77 @@ const barReasonOptions: ChartOptions<'bar'> = {
 .chart-wrap {
   height: 280px;
   position: relative;
+}
+
+.notif-btn {
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: color 0.18s ease;
+}
+
+.notif-btn:hover {
+  color: #fff !important;
+}
+
+.notif-panel {
+  background-color: rgb(var(--v-theme-surface)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.notif-panel-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.notif-list {
+  background: transparent !important;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.notif-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.notif-unread {
+  background: rgba(66, 165, 245, 0.05) !important;
+}
+
+.notif-item-title {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  white-space: normal !important;
+}
+
+.notif-item-body {
+  font-size: 0.75rem !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  white-space: normal !important;
+  line-height: 1.4 !important;
+  -webkit-line-clamp: unset !important;
+}
+
+.notif-time {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  align-self: flex-start;
+  padding-top: 2px;
+  padding-left: 8px;
 }
 
 :deep(.v-app-bar .v-select__selection-text) {

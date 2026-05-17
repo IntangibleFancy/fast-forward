@@ -29,11 +29,13 @@ Generate a fake dataset as a JSON file (src/data/metrics.json).
     - Middle: Bar chart showing the number of open exceptions each month
     - Right: Bar chart showing number of open exceptions for the year by open exception reason
 - Each section has a title and short description
+- To the right of the month picker, a notifications bell with badge showing 3 unread
 
 ## Interactions
 - v-app-bar month picker filters data for the v-cards and highlights the corresponding month on the chart
 - When "All" is selected from the month picker, the v-cards display the sum or average of all months
 - v-cards show a small up/down arrow indicating the change from the previous month if data is available
+- Clicking on the notifications bell reveals notification messages 
 
 ## Tech
 - Vue 3
