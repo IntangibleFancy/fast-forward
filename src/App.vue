@@ -596,4 +596,12 @@ const barReasonOptions: ChartOptions<'bar'> = {
   height: 280px;
   position: relative;
 }
+
+:deep(.v-app-bar .v-select__selection-text) {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+:deep(.v-app-bar .v-select .v-icon) {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
 </style>
