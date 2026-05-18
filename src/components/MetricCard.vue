@@ -63,7 +63,7 @@ const trendClass = computed(() => {
         size="16"
       />
       <span :class="trendClass" class="text-caption">
-        {{ trend.pct }}%<template v-if="trendContext"> {{ trendContext }}</template>
+        {{ trend.pct }}% <template v-if="trendContext"> {{ trendContext }}</template>
       </span>
     </div>
     <div v-if="filterLabel" class="text-caption text-disabled mt-2">{{ filterLabel }}</div>
